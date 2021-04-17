@@ -12,6 +12,8 @@ import { CodeComponent } from './pages/code/code.component';
 import { ModelComponent } from './pages/model/model.component';
 import { PluginsComponent } from './pages/plugins/plugins.component';
 import { UpdatesComponent } from './pages/updates/updates.component';
+import { HeaderComponent } from './components/header/header.component';
+import { MenuComponent } from './components/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { UpdatesComponent } from './pages/updates/updates.component';
     CodeComponent,
     ModelComponent,
     PluginsComponent,
-    UpdatesComponent
+    UpdatesComponent,
+    HeaderComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
