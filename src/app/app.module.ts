@@ -1,40 +1,47 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { NgModule }                            from '@angular/core';
+import { BrowserModule }                       from '@angular/platform-browser';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BrowserAnimationsModule }             from '@angular/platform-browser/animations';
+import { FormsModule }                         from '@angular/forms';
+import { MatFormFieldDefaultOptions, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SetPassComponent } from './pages/set-pass/set-pass.component';
-import { LoginComponent } from './pages/login/login.component';
-import { MainComponent } from './pages/main/main.component';
-import { ConfigComponent } from './pages/config/config.component';
-import { CodeComponent } from './pages/code/code.component';
-import { ModelComponent } from './pages/model/model.component';
-import { PluginsComponent } from './pages/plugins/plugins.component';
-import { UpdatesComponent } from './pages/updates/updates.component';
-import { HeaderComponent } from './components/header/header.component';
-import { MenuComponent } from './components/menu/menu.component';
+import { AppComponent }     from './app.component';
+
+import { PAGES, COMPONENTS, PIPES, SERVICES, MATERIAL } from './app.common';
+import { TokenInterceptor } from './interceptors/token.interceptor';
+
+const appearance: MatFormFieldDefaultOptions = {
+	appearance: 'outline'
+};
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SetPassComponent,
-    LoginComponent,
-    MainComponent,
-    ConfigComponent,
-    CodeComponent,
-    ModelComponent,
-    PluginsComponent,
-    UpdatesComponent,
-    HeaderComponent,
-    MenuComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		...PAGES,
+		...COMPONENTS,
+		...PIPES
+	],
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		BrowserAnimationsModule,
+		HttpClientModule,
+		FormsModule,
+		...MATERIAL
+	],
+	providers: [
+		...SERVICES,
+		{
+			provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+			useValue: appearance
+		},
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: TokenInterceptor,
+			multi: true
+		}
+	],
+	bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
