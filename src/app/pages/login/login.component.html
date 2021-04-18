@@ -2,4 +2,13 @@
 
 <mat-card class="login">
 	<mat-card-title>Iniciar sesión</mat-card-title>
+	<mat-card-content>
+		<mat-form-field>
+			<mat-label>Introduce la contraseña</mat-label>
+			<input matInput placeholder="Contraseña" [(ngModel)]="pass">
+		</mat-form-field>
+	</mat-card-content>
+	<mat-card-actions>
+		<button mat-raised-button color="primary" (click)="login()">Continuar</button>
+	</mat-card-actions>
 </mat-card>

@@ -45,11 +45,13 @@ export const PIPES: any[] = [
 import { DataShareService } from './services/data-share.service';
 import { UserService }      from './services/user.service';
 import { AuthService }      from './services/auth.service';
+import { ApiService }       from './services/api.service';
 
 export const SERVICES: any[] = [
 	DataShareService,
 	UserService,
-	AuthService
+	AuthService,
+	ApiService
 ];
 
 /*
@@ -58,9 +60,13 @@ export const SERVICES: any[] = [
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule }  from '@angular/material/button';
 import { MatCardModule }    from '@angular/material/card';
+import { MatFormFieldModule }   from '@angular/material/form-field';
+import { MatInputModule }       from '@angular/material/input';
 
 export const MATERIAL: any[] = [
 	MatToolbarModule,
 	MatButtonModule,
-	MatCardModule
+	MatCardModule,
+	MatFormFieldModule,
+	MatInputModule
 ];

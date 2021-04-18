@@ -1,7 +1,20 @@
 .login {
 	position: fixed;
 	width: 500px;
-	height: 300px;
-	top: calc(50% - 150px);
+	height: 160px;
+	top: calc(50% - 80px);
 	left: calc(50% - 250px);
+}
+
+mat-card-content {
+	height: calc(100% - 80px);
+
+	mat-form-field {
+		width: 100%;
+		margin: 16px 0 !important;
+	}
+}
+
+mat-card-actions {
+	text-align: right;
 }

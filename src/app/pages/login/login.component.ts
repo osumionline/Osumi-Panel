@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import  { ApiService }       from '../../services/api.service';
 
 @Component({
   selector: 'app-login',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+	pass: string = '';
 
-  constructor() { }
+	constructor(private api: ApiService) {}
+	ngOnInit(): void {}
 
-  ngOnInit(): void {
-  }
-
+	login() {
+		this.api.login(this.pass).subscribe(result => {
+			console.log(result);
+		});
+	}
 }
