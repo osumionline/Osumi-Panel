@@ -5,7 +5,7 @@ import { DataShareService } from './data-share.service';
 @Injectable()
 export class UserService {
 	logged: boolean = false;
-	token: string | undefined = undefined;
+	token: string = '';
 
 	constructor(private dss: DataShareService) {}
 
@@ -30,7 +30,7 @@ export class UserService {
 
 	logout() {
 		this.logged = false;
-		this.token = undefined;
+		this.token = '';
 		this.dss.removeGlobal('login');
 	}
 }

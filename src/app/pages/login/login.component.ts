@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import  { ApiService }       from '../../services/api.service';
+import { Router }            from '@angular/router';
+import { ApiService }        from '../../services/api.service';
+import { UserService }       from '../../services/user.service';
+import { Utils }             from '../../model/utils.class';
 
 @Component({
   selector: 'app-login',
@@ -8,13 +11,35 @@ import  { ApiService }       from '../../services/api.service';
 })
 export class LoginComponent implements OnInit {
 	pass: string = '';
+	loading: boolean = false;
 
-	constructor(private api: ApiService) {}
+	constructor(
+		private api: ApiService,
+		private user: UserService,
+		private router: Router
+	) {}
+
 	ngOnInit(): void {}
 
-	login() {
+	login(): void {
+		if (this.pass==='') {
+			alert('¡No puedes dejar la contraseña en blanco!');
+			return;
+		}
+
+		this.loading = true;
 		this.api.login(this.pass).subscribe(result => {
-			console.log(result);
+			if (result.status==='ok') {
+				this.user.logged = true;
+				this.user.token = Utils.urldecode(result.token);
+				this.user.saveLogin();
+
+				this.router.navigate(['/main']);
+			}
+			else {
+				this.loading = false;
+				alert('La contraseña es incorrecta.');
+			}
 		});
 	}
 }

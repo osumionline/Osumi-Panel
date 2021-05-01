@@ -4,5 +4,9 @@ export interface DataShareGlobals {
 
 export interface LoginResult {
 	status: string;
-	token?: string;
+	token: string;
+}
+
+export interface StatusResult {
+  status: string;
 }

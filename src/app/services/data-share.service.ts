@@ -3,7 +3,7 @@ import { DataShareGlobals } from '../interfaces/interfaces';
 
 @Injectable()
 export class DataShareService {
-	saveLocalStorage: boolean = false;
+	saveLocalStorage: boolean = true;
 	globals: DataShareGlobals = {};
 
 	constructor() {}
