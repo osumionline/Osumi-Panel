@@ -8,5 +8,11 @@ export interface LoginResult {
 }
 
 export interface StatusResult {
-  status: string;
+	status: string;
+}
+
+export interface MenuOption {
+	id: string;
+	url: string;
+	name: string;
 }

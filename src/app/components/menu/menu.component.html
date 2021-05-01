@@ -1,17 +1,8 @@
 <ul>
-	<li>
-		<a routerLink="/config">Configuración</a>
-	</li>
-	<li>
-		<a routerLink="/code">Código</a>
-	</li>
-	<li>
-		<a routerLink="/model">Modelo</a>
-	</li>
-	<li>
-		<a routerLink="/plugins">Plugins</a>
-	</li>
-	<li>
-		<a routerLink="/updates">Actualizaciones</a>
+	<li *ngFor="let option of options">
+		<a [routerLink]="option.url" [ngClass]="{'selected': selected===option.id}">
+			<img [src]="'/assets/'+option.id+'.svg'" [alt]="option.name">
+			{{option.name}}
+		</a>
 	</li>
 </ul>
