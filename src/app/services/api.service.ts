@@ -5,7 +5,8 @@ import { environment } from '../../environments/environment';
 
 import {
 	StatusResult,
-	LoginResult
+	LoginResult,
+	ModulesResult
 } from '../interfaces/interfaces';
 
 @Injectable({
@@ -26,5 +27,9 @@ export class ApiService {
 
 	login(pass: string): Observable<LoginResult> {
 		return this.http.post<LoginResult>(this.apiUrl + 'login', {pass});
+	}
+
+	getModules(): Observable<ModulesResult> {
+		return this.http.post<ModulesResult>(this.apiUrl + 'getModules', {});
 	}
 }

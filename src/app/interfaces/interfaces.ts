@@ -16,3 +16,22 @@ export interface MenuOption {
 	url: string;
 	name: string;
 }
+
+export interface ModuleMethodInterface {
+	name: string;
+	url: string;
+	type: string;
+	filter: string;
+	layout: string;
+}
+
+export interface ModuleInterface {
+	name: string;
+	prefix: string;
+	methods: ModuleMethodInterface[];
+}
+
+export interface ModulesResult {
+	status: string;
+	list: ModuleInterface[];
+}
