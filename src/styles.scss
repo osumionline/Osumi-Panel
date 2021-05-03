@@ -3,7 +3,7 @@ html, body { height: 100%; }
 body {
 	margin: 0;
 	font-family: Roboto, "Helvetica Neue", sans-serif;
-	background-color: #fafafa;
+	background-color: #eef0f1;
 	color: rgba(0, 0, 0, 0.87);
 }
 
@@ -18,6 +18,71 @@ section {
 	display: inline-flex;
 	justify-content: center;
 	align-items: center;
-	height: calc(100% - 64px);
+	height: 100%;
 	width: calc(85% - 33px);
+	overflow-y: scroll;
+	
+	&.col {
+		flex-direction: column;
+		justify-content: normal;
+	}
+}
+
+.card-buttons {
+	display: flex !important;
+    justify-content: space-between;
+}
+
+.dialog-bg {
+	position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background-color: rgba(0,0,0,0.4);
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+	&.show {
+		display: flex;
+	}
+	
+	.dialog-box {
+		background-color: #fff;
+		min-width: 30%;
+		min-height: 300px;
+		border-radius: 8px;
+		padding: 16px;
+		display: flex;
+		flex-direction: column;
+		box-shadow: 6px 6px 5px 0px rgb(0 0 0 / 40%);
+
+		.dialog-header {
+			display: flex;
+			justify-content: space-between;
+			font-size: 22px;
+			border-bottom: 1px solid #ccc;
+			height: 32px;
+			align-items: center;
+
+			a {
+				display: block;
+				text-decoration: none;
+				color: #888;
+				height: 20px;
+				width: 20px;
+				text-align: center;
+				
+				&:hover {
+					color: #000;
+				}
+			}
+		}
+		
+		.dialog-content {
+		
+		}
+	}
 }

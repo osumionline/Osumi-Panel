@@ -1,5 +1,5 @@
 :host {
-	width: 15%;
+	width: calc(15% + 32px);
 	height: calc(100% - 32px);
 }
 
@@ -27,6 +27,8 @@ ul {
 			font-size: 18px;
 			align-items: center;
 			transition: all .2s ease-in-out;
+			margin: 0 -16px;
+			padding: 0 16px;
 
 			&:hover {
 				font-size: 20px;
@@ -34,7 +36,7 @@ ul {
 			}
 
 			&.selected {
-				background-color: #eee;
+				background-color: #fff;
 			}
 
 			img {

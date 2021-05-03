@@ -10,6 +10,8 @@ import { Module } from '../../model/module.class';
 })
 export class CodeComponent implements OnInit {
 	modules: Module[] = [];
+	showAddModule: boolean = false;
+	newModule: Module = new Module();
 
 	constructor(private as: ApiService, private cms: ClassMapperService) {}
 
@@ -18,5 +20,14 @@ export class CodeComponent implements OnInit {
 			this.modules = this.cms.getModules(result.list);
 			console.log(this.modules);
 		});
+	}
+	
+	openAddModule(): void {
+		this.showAddModule = true;
+	}
+	
+	closeAddModule(ev: MouseEvent): void {
+		ev && ev.preventDefault();
+		this.showAddModule = false;
 	}
 }

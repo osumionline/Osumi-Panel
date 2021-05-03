@@ -1,0 +1,41 @@
+.module {
+	width: 50%;
+	margin: 16px 0;
+	
+	.module-method {
+		border: 1px solid #ccc;
+		border-radius: 8px;
+		padding: 8px;
+		margin-bottom: 16px;
+
+		.module-method-name {
+			font-size: 16px;
+			font-weight: 500;
+			margin-bottom: 8px;
+		}
+		
+		.module-method-info {
+			display: flex;
+			flex-direction: column;
+
+			.module-method-info-row {
+				display: flex;
+				flex-direction: row;
+
+				.module-method-info-col {
+					flex: 1;
+
+					label {
+						font-weight: bold;
+					}
+				}
+			}
+		}
+	}
+}
+
+.add-module {
+	position: fixed;
+	bottom: 32px;
+	right: 32px;
+}
