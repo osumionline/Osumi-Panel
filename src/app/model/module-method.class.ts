@@ -6,7 +6,7 @@ export class ModuleMethod {
     public name: string = '',
     public url: string = '',
     public type: string = '',
-    public filter: string = '',
+    public filters: string[] = [],
     public layout: string = ''
   ) {}
 
@@ -14,7 +14,9 @@ export class ModuleMethod {
     this.name = Utils.urldecode(mm.name);
     this.url = Utils.urldecode(mm.url);
     this.type = Utils.urldecode(mm.type);
-    this.filter = Utils.urldecode(mm.filter);
+    this.filters = mm.filters.map((f: string): string => {
+      return Utils.urldecode(f);
+    });
     this.layout = Utils.urldecode(mm.layout);
 
     return this;
@@ -25,7 +27,9 @@ export class ModuleMethod {
       name: Utils.urlencode(this.name),
       url: Utils.urlencode(this.url),
       type: Utils.urlencode(this.type),
-      filter: Utils.urlencode(this.filter),
+      filters: this.filters.map((f: string): string => {
+        return Utils.urlencode(f);
+      }),
       layout: Utils.urlencode(this.layout),
     };
   }

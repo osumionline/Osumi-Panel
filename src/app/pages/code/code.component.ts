@@ -18,11 +18,11 @@ export class CodeComponent implements OnInit {
   ngOnInit(): void {
     this.as.getModules().subscribe((result) => {
       this.modules = this.cms.getModules(result.list);
-      console.log(this.modules);
     });
   }
 
   openAddModule(): void {
+    this.newModule = new Module();
     this.showAddModule = true;
   }
 
