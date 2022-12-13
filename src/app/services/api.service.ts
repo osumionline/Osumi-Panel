@@ -1,35 +1,34 @@
-import { HttpClient }  from '@angular/common/http';
-import { Injectable }  from '@angular/core';
-import { Observable }  from 'rxjs';
-import { environment } from '../../environments/environment';
-
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import {
-	StatusResult,
-	LoginResult,
-	ModulesResult
-} from '../interfaces/interfaces';
+  LoginResult,
+  ModulesResult,
+  StatusResult,
+} from 'src/app/interfaces/interfaces';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApiService {
-	apiUrl = environment.apiUrl;
+  apiUrl: string = environment.apiUrl;
 
-	constructor(private http : HttpClient){}
+  constructor(private http: HttpClient) {}
 
-	checkPass(): Observable<StatusResult> {
-		return this.http.post<StatusResult>(this.apiUrl + 'checkPass', {});
-	}
+  checkPass(): Observable<StatusResult> {
+    return this.http.post<StatusResult>(this.apiUrl + 'checkPass', {});
+  }
 
-	setPass(pass: string): Observable<StatusResult> {
-		return this.http.post<StatusResult>(this.apiUrl + 'setPass', {pass});
-	}
+  setPass(pass: string): Observable<StatusResult> {
+    return this.http.post<StatusResult>(this.apiUrl + 'setPass', { pass });
+  }
 
-	login(pass: string): Observable<LoginResult> {
-		return this.http.post<LoginResult>(this.apiUrl + 'login', {pass});
-	}
+  login(pass: string): Observable<LoginResult> {
+    return this.http.post<LoginResult>(this.apiUrl + 'login', { pass });
+  }
 
-	getModules(): Observable<ModulesResult> {
-		return this.http.post<ModulesResult>(this.apiUrl + 'getModules', {});
-	}
+  getModules(): Observable<ModulesResult> {
+    return this.http.post<ModulesResult>(this.apiUrl + 'getModules', {});
+  }
 }

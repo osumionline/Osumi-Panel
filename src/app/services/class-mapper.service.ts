@@ -1,53 +1,34 @@
-import { Injectable }   from '@angular/core';
-import { Module }       from '../model/module.class';
-import { ModuleMethod } from '../model/module-method.class';
+import { Injectable } from '@angular/core';
 import {
-	ModuleMethodInterface,
-	ModuleInterface
-} from '../interfaces/interfaces';
-import { Utils } from '../model/utils.class';
+  ModuleInterface,
+  ModuleMethodInterface,
+} from 'src/app/interfaces/interfaces';
+import { ModuleMethod } from 'src/app/model/module-method.class';
+import { Module } from 'src/app/model/module.class';
 
 @Injectable({
-	providedIn: 'root'
+  providedIn: 'root',
 })
 export class ClassMapperService {
-	constructor() {}
+  constructor() {}
 
-	getModuleMethod(mm: ModuleMethodInterface): ModuleMethod {
-		return new ModuleMethod(
-			Utils.urldecode(mm.name),
-			Utils.urldecode(mm.url),
-			mm.type,
-			mm.filter,
-			mm.layout
-		);
-	}
+  getModuleMethod(mm: ModuleMethodInterface): ModuleMethod {
+    return new ModuleMethod().fromInterface(mm);
+  }
 
-	getModuleMethods(mms: ModuleMethodInterface[]): ModuleMethod[] {
-		let moduleMethods: ModuleMethod[] = [];
+  getModuleMethods(mms: ModuleMethodInterface[]): ModuleMethod[] {
+    return mms.map((mm: ModuleMethodInterface): ModuleMethod => {
+      return this.getModuleMethod(mm);
+    });
+  }
 
-		for (let mm of mms) {
-			moduleMethods.push(this.getModuleMethod(mm));
-		}
+  getModule(m: ModuleInterface): Module {
+    return new Module().fromInterface(m);
+  }
 
-		return moduleMethods;
-	}
-
-	getModule(m: ModuleInterface): Module {
-		return new Module(
-			m.name,
-			m.prefix,
-			this.getModuleMethods(m.methods)
-		);
-	}
-
-	getModules(ms: ModuleInterface[]): Module[] {
-		let modules: Module[] = [];
-
-		for (let m of ms) {
-			modules.push(this.getModule(m));
-		}
-
-		return modules;
-	}
+  getModules(ms: ModuleInterface[]): Module[] {
+    return ms.map((m: ModuleInterface): Module => {
+      return this.getModule(m);
+    });
+  }
 }

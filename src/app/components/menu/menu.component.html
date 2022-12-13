@@ -1,7 +1,9 @@
 <ul>
 	<li *ngFor="let option of options">
-		<a [routerLink]="option.url" [ngClass]="{'selected': selected===option.id}">
-			<img [src]="'/assets/'+option.id+'.svg'" [alt]="option.name">
+		<a [routerLink]="option.url"
+		   [ngClass]="{'selected': selected===option.id}">
+			<img [src]="'/assets/'+option.id+'.svg'"
+				 [alt]="option.name">
 			{{option.name}}
 		</a>
 	</li>

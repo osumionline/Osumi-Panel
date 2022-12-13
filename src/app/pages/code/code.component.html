@@ -4,13 +4,15 @@
 	<app-menu selected="code"></app-menu>
 	<section class="col">
 		<span *ngIf="modules.length===0">Todavía no hay ningún módulo.</span>
-		<mat-card *ngFor="let module of modules" class="module">
+		<mat-card *ngFor="let module of modules"
+				  class="module">
 			<mat-card-header>
 				<mat-card-title>{{module.name}}</mat-card-title>
 				<mat-card-subtitle *ngIf="module.prefix">(Prefix: <strong>{{module.prefix}}</strong>)</mat-card-subtitle>
 			</mat-card-header>
 			<mat-card-content>
-				<div *ngFor="let method of module.methods" class="module-method">
+				<div *ngFor="let method of module.methods"
+					 class="module-method">
 					<div class="module-method-name">{{method.name}}</div>
 					<div class="module-method-info">
 						<div class="module-method-info-row">
@@ -24,11 +26,13 @@
 							</div>
 						</div>
 						<div class="module-method-info-row">
-							<div *ngIf="method.filter" class="module-method-info-col">
+							<div *ngIf="method.filter"
+								 class="module-method-info-col">
 								<label>Filtro:</label>
 								{{method.filter}}
 							</div>
-							<div *ngIf="method.layout" class="module-method-info-col">
+							<div *ngIf="method.layout"
+								 class="module-method-info-col">
 								<label>Layout:</label>
 								{{method.layout}}
 							</div>
@@ -37,7 +41,8 @@
 				</div>
 			</mat-card-content>
 			<mat-card-actions class="card-buttons">
-				<button mat-flat-button color="warn">
+				<button mat-flat-button
+						color="warn">
 					<mat-icon>delete_forever</mat-icon>
 					Borrar
 				</button>
@@ -47,28 +52,37 @@
 				</button>
 			</mat-card-actions>
 		</mat-card>
-		
-		<button mat-raised-button color="primary" class="add-module" (click)="openAddModule()">
+
+		<button mat-raised-button
+				color="primary"
+				class="add-module"
+				(click)="openAddModule()">
 			<mat-icon>add_circle</mat-icon>
 			Nuevo módulo
 		</button>
 	</section>
 </main>
 
-<div class="dialog-bg" [ngClass]="{'show':showAddModule}">
+<div class="dialog-bg"
+	 [ngClass]="{'show':showAddModule}">
 	<div class="dialog-box">
 		<div class="dialog-header">
 			Nuevo módulo
-			<a href="#" (click)="closeAddModule($event)">x</a>
+			<a href="#"
+			   (click)="closeAddModule($event)">x</a>
 		</div>
 		<div class="dialog-content">
 			<mat-form-field>
 				<mat-label>Nombre del módulo</mat-label>
-				<input matInput placeholder="Nombre" [(ngModel)]="newModule.name">
+				<input matInput
+					   placeholder="Nombre"
+					   [(ngModel)]="newModule.name">
 			</mat-form-field>
 			<mat-form-field>
 				<mat-label>Prefijo (opcional)</mat-label>
-				<input matInput placeholder="Prefijo" [(ngModel)]="newModule.prefix">
+				<input matInput
+					   placeholder="Prefijo"
+					   [(ngModel)]="newModule.prefix">
 			</mat-form-field>
 		</div>
 	</div>
