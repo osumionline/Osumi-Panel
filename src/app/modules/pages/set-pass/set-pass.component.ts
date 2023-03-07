@@ -1,13 +1,19 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MaterialModule } from 'src/app/modules/material/material.module';
+import { HeaderComponent } from 'src/app/modules/shared/components/header/header.component';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
+  standalone: true,
   selector: 'app-set-pass',
   templateUrl: './set-pass.component.html',
   styleUrls: ['./set-pass.component.scss'],
+  imports: [MaterialModule, FormsModule, CommonModule, HeaderComponent],
 })
-export class SetPassComponent {
+export default class SetPassComponent {
   pass: string = '';
   conf: string = '';
   loading: boolean = false;

@@ -10,7 +10,7 @@ export class UserService {
   constructor(private dss: DataShareService) {}
 
   loadLogin(): void {
-    const loginObj = this.dss.getGlobal('login');
+    const loginObj: LoginResult = this.dss.getGlobal('login');
     if (loginObj === null) {
       this.logout();
     } else {

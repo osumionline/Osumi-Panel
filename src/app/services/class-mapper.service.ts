@@ -10,8 +10,6 @@ import { Module } from 'src/app/model/module.class';
   providedIn: 'root',
 })
 export class ClassMapperService {
-  constructor() {}
-
   getModuleMethod(mm: ModuleMethodInterface): ModuleMethod {
     return new ModuleMethod().fromInterface(mm);
   }
