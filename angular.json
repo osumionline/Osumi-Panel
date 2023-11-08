@@ -71,19 +71,19 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "osumi-panel:build",
-            "port": 5500
+            "port": 5500,
+            "buildTarget": "osumi-panel:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "osumi-panel:build:production"
+              "buildTarget": "osumi-panel:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "osumi-panel:build"
+            "buildTarget": "osumi-panel:build"
           }
         },
         "test": {
