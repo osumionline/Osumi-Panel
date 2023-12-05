@@ -1,8 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
-import { MaterialModule } from 'src/app/modules/material/material.module';
 import { HeaderComponent } from 'src/app/modules/shared/components/header/header.component';
 import { ApiService } from 'src/app/services/api.service';
 
@@ -11,7 +14,15 @@ import { ApiService } from 'src/app/services/api.service';
   selector: 'app-set-pass',
   templateUrl: './set-pass.component.html',
   styleUrls: ['./set-pass.component.scss'],
-  imports: [MaterialModule, FormsModule, CommonModule, HeaderComponent],
+  imports: [
+    FormsModule,
+    CommonModule,
+    HeaderComponent,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+  ],
 })
 export default class SetPassComponent {
   pass: string = '';

@@ -1,18 +1,22 @@
-<app-header [logged]="true"></app-header>
+<app-header [logged]="true" />
 
 <main>
-	<app-menu selected="code"></app-menu>
+	<app-menu selected="code" />
 	<section class="col">
-		<span *ngIf="modules.length===0">Todavía no hay ningún módulo.</span>
-		<mat-card *ngFor="let module of modules"
-				  class="module">
+		@if (modules.length === 0) {
+		<span>Todavía no hay ningún módulo.</span>
+		}
+		@for (module of modules; track module.name) {
+		<mat-card class="module">
 			<mat-card-header>
 				<mat-card-title>{{module.name}}</mat-card-title>
-				<mat-card-subtitle *ngIf="module.prefix">(Prefix: <strong>{{module.prefix}}</strong>)</mat-card-subtitle>
+				@if (module.prefix) {
+				<mat-card-subtitle>(Prefix: <strong>{{module.prefix}}</strong>)</mat-card-subtitle>
+				}
 			</mat-card-header>
 			<mat-card-content>
-				<div *ngFor="let method of module.methods"
-					 class="module-method">
+				@for (method of module.methods; track method.name) {
+				<div class="module-method">
 					<div class="module-method-name">{{method.name}}</div>
 					<div class="module-method-info">
 						<div class="module-method-info-row">
@@ -26,19 +30,22 @@
 							</div>
 						</div>
 						<div class="module-method-info-row">
-							<div *ngIf="method.filters"
-								 class="module-method-info-col">
+							@if (method.filters) {
+							<div class="module-method-info-col">
 								<label>Filtros:</label>
 								{{method.filters}}
 							</div>
-							<div *ngIf="method.layout"
-								 class="module-method-info-col">
+							}
+							@if (method.layout) {
+							<div class="module-method-info-col">
 								<label>Layout:</label>
 								{{method.layout}}
 							</div>
+							}
 						</div>
 					</div>
 				</div>
+				}
 			</mat-card-content>
 			<mat-card-actions class="card-buttons">
 				<button mat-flat-button
@@ -52,6 +59,7 @@
 				</button>
 			</mat-card-actions>
 		</mat-card>
+		}
 
 		<button mat-raised-button
 				color="primary"

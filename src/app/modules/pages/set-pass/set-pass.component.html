@@ -1,4 +1,4 @@
-<app-header></app-header>
+<app-header />
 
 <mat-card class="form">
 	<mat-card-header>
@@ -26,8 +26,10 @@
 				color="primary"
 				(click)="create()"
 				[disabled]="loading">
+			@if (loading) {
 			<img src="/assets/loading.svg"
-				 *ngIf="loading">
+				 alt="">
+			}
 			Continuar
 		</button>
 	</mat-card-actions>

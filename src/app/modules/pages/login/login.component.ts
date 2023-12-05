@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
 import { LoginResult } from 'src/app/interfaces/interfaces';
-import { MaterialModule } from 'src/app/modules/material/material.module';
 import { HeaderComponent } from 'src/app/modules/shared/components/header/header.component';
 import { ApiService } from 'src/app/services/api.service';
 import { UserService } from 'src/app/services/user.service';
@@ -13,9 +16,16 @@ import { Utils } from 'src/app/shared/utils.class';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  imports: [MaterialModule, FormsModule, HeaderComponent],
+  imports: [
+    FormsModule,
+    HeaderComponent,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+  ],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   pass: string = '';
   loading: boolean = false;
 
@@ -24,8 +34,6 @@ export class LoginComponent implements OnInit {
     private user: UserService,
     private router: Router
   ) {}
-
-  ngOnInit(): void {}
 
   login(): void {
     if (this.pass === '') {

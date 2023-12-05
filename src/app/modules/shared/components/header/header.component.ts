@@ -1,7 +1,7 @@
-import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { Router } from '@angular/router';
-import { MaterialModule } from 'src/app/modules/material/material.module';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { UserService } from 'src/app/services/user.service';
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  imports: [CommonModule, MaterialModule],
+  imports: [MatToolbarModule, MatButtonModule],
 })
 export class HeaderComponent {
   @Input() logged: boolean = false;

@@ -6,8 +6,6 @@ export class DataShareService {
   saveLocalStorage: boolean = true;
   globals: DataShareGlobals = {};
 
-  constructor() {}
-
   setSaveLocalStorage(mode: boolean): void {
     this.saveLocalStorage = mode;
   }

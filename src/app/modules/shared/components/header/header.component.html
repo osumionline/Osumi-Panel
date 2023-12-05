@@ -1,7 +1,8 @@
 <mat-toolbar color="primary">
 	Osumi Framework
 	<span class="flex"></span>
-	<button *ngIf="logged"
-			mat-stroked-button
+	@if (logged) {
+	<button mat-stroked-button
 			(click)="exit()">Salir</button>
+	}
 </mat-toolbar>
