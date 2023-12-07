@@ -1,11 +1,8 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-
+import { Routes } from '@angular/router';
+import { isLoggedGuardFn } from 'src/app/guard/auth.guard.fn';
 import { LoginComponent } from 'src/app/modules/pages/login/login.component';
 
-import { AuthGuard } from 'src/app/guard/auth.guard';
-
-const routes: Routes = [
+export const routes: Routes = [
   { path: '', component: LoginComponent },
   {
     path: 'set-pass',
@@ -15,40 +12,34 @@ const routes: Routes = [
   {
     path: 'main',
     loadComponent: () => import('src/app/modules/pages/main/main.component'),
-    canActivate: [AuthGuard],
+    canActivate: [isLoggedGuardFn],
   },
   {
     path: 'config',
     loadComponent: () =>
       import('src/app/modules/pages/config/config.component'),
-    canActivate: [AuthGuard],
+    canActivate: [isLoggedGuardFn],
   },
   {
     path: 'code',
     loadComponent: () => import('src/app/modules/pages/code/code.component'),
-    canActivate: [AuthGuard],
+    canActivate: [isLoggedGuardFn],
   },
   {
     path: 'model',
     loadComponent: () => import('src/app/modules/pages/model/model.component'),
-    canActivate: [AuthGuard],
+    canActivate: [isLoggedGuardFn],
   },
   {
     path: 'plugins',
     loadComponent: () =>
       import('src/app/modules/pages/plugins/plugins.component'),
-    canActivate: [AuthGuard],
+    canActivate: [isLoggedGuardFn],
   },
   {
     path: 'updates',
     loadComponent: () =>
       import('src/app/modules/pages/updates/updates.component'),
-    canActivate: [AuthGuard],
+    canActivate: [isLoggedGuardFn],
   },
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-})
-export class AppRoutingModule {}
